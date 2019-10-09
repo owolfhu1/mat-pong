@@ -1,5 +1,5 @@
 .side-bar {
-  width: 200px;
+  width: 400px;
 }
 
 .container {
@@ -8,5 +8,10 @@
 
 .middle {
   text-align: center;
+  margin: 10px;
 }
 
+img {
+  width: 100%;
+  border-radius: 10px;
+}

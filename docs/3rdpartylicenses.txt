@@ -354,11 +354,11 @@ MIT
 
 @angular/material/sidenav
 
+@angular/material/card
+
 @angular/material/expansion
 
 @angular/material/button
-
-@angular/material/card
 
 @angular/material/tabs
 

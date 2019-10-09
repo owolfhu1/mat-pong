@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { URL, LOGO_PATH } from '../constants';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +8,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   opened = true;
-  loading = false;
+  loading = true;
+  image = LOGO_PATH;
+
+  constructor() {
+    fetch(URL + `players/test`, {mode: 'cors'})
+      .then(res => res.text()).then(() => {
+        this.loading = false;
+      }
+    );
+  }
 }
 
 /*

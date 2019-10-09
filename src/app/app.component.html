@@ -4,7 +4,12 @@
 </div>
 
 <mat-drawer-container *ngIf="!loading" class="container">
-  <mat-drawer mode="side" [opened]="opened">
+  <mat-drawer mode="side" class="side-bar" [opened]="opened">
+    <mat-card class="middle">
+      <h2>Ping Pong Tracker</h2>
+      <img [src]="image" alt=""/>
+    </mat-card>
+
     <mat-accordion>
       <mat-expansion-panel>
         <mat-expansion-panel-header>
@@ -33,7 +38,6 @@
         Register content.
       </mat-expansion-panel>
     </mat-accordion>
-
   </mat-drawer>
 
   <mat-drawer-content class="main" style="display: flex">
@@ -43,11 +47,11 @@
 
     <mat-card style="flex: 1; margin: 15px">
       <mat-tab-group>
-        <mat-tab label="Game Lookup"> Game Lookup </mat-tab>
-
         <mat-tab label="High Scores"> High Scores </mat-tab>
 
         <mat-tab label="Seasonal Scores"> Seasonal Scores </mat-tab>
+
+        <mat-tab label="Game Lookup"> Game Lookup </mat-tab>
 
         <mat-tab label="Score Graph"> Score Graph </mat-tab>
       </mat-tab-group>
