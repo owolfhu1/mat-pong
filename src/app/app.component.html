@@ -1,5 +1,10 @@
-<mat-drawer-container class="container">
-  <mat-drawer class="side-bar" mode="side" [opened]="opened">
+<div *ngIf="loading" class="middle">
+  <h1>Booting API...</h1>
+  <mat-progress-bar mode="query" color="accent"></mat-progress-bar>
+</div>
+
+<mat-drawer-container *ngIf="!loading" class="container">
+  <mat-drawer mode="side" [opened]="opened">
     <mat-accordion>
       <mat-expansion-panel>
         <mat-expansion-panel-header>
@@ -30,16 +35,22 @@
     </mat-accordion>
 
   </mat-drawer>
+
   <mat-drawer-content class="main" style="display: flex">
     <button mat-button (click)="opened = !opened">
       {{ opened ? '<' : '>' }}
     </button>
 
-    <mat-tab-group style="flex: 1">
-      <mat-tab label="Game Lookup"> Game Lookup </mat-tab>
-      <mat-tab label="High Scores"> High Scores </mat-tab>
-      <mat-tab label="Seasonal Scores"> Seasonal Scores </mat-tab>
-      <mat-tab label="Score Graph"> Score Graph </mat-tab>
-    </mat-tab-group>
+    <mat-card style="flex: 1; margin: 15px">
+      <mat-tab-group>
+        <mat-tab label="Game Lookup"> Game Lookup </mat-tab>
+
+        <mat-tab label="High Scores"> High Scores </mat-tab>
+
+        <mat-tab label="Seasonal Scores"> Seasonal Scores </mat-tab>
+
+        <mat-tab label="Score Graph"> Score Graph </mat-tab>
+      </mat-tab-group>
+    </mat-card>
   </mat-drawer-content>
 </mat-drawer-container>

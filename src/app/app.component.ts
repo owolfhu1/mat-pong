@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   opened = true;
+  loading = false;
 }
+
+/*
+  for deploy:
+  ng build --prod --output-path docs --base-href mat-pong
+  copy index.html -> 404.html
+  git add, commit, push
+ */
