@@ -5,9 +5,9 @@
 
 <mat-drawer-container *ngIf="!loading" class="container">
   <mat-drawer mode="side" class="side-bar" [opened]="opened">
-    <mat-card class="middle">
-      <h2>Ping Pong Tracker</h2>
-      <img [src]="image" alt=""/>
+    <mat-card class="middle margin">
+      <h1 (click)="showImage = !showImage">Ping Pong Tracker</h1>
+      <img *ngIf="showImage" [src]="image" alt=""/>
     </mat-card>
 
     <mat-accordion>
@@ -40,13 +40,13 @@
     </mat-accordion>
   </mat-drawer>
 
-  <mat-drawer-content class="main" style="display: flex">
+  <mat-drawer-content class="main">
     <button mat-button (click)="opened = !opened">
       {{ opened ? '<' : '>' }}
     </button>
 
-    <mat-card style="flex: 1; margin: 15px">
-      <mat-tab-group>
+    <mat-card class="grow margin">
+      <mat-tab-group mat-stretch-tabs>
         <mat-tab label="High Scores"> High Scores </mat-tab>
 
         <mat-tab label="Seasonal Scores"> Seasonal Scores </mat-tab>

@@ -8,10 +8,21 @@
 
 .middle {
   text-align: center;
-  margin: 10px;
 }
 
 img {
   width: 100%;
   border-radius: 10px;
+}
+
+.main {
+  display: flex
+}
+
+.grow {
+  flex: 1;
+}
+
+.margin {
+  margin: 10px;
 }

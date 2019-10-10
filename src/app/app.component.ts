@@ -10,6 +10,7 @@ export class AppComponent {
   opened = true;
   loading = true;
   image = LOGO_PATH;
+  showImage = true;
 
   constructor() {
     fetch(URL + `players/test`, {mode: 'cors'})
