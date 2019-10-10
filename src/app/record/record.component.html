@@ -1,0 +1,40 @@
+<mat-form-field class="player">
+  <mat-label>player</mat-label>
+  <mat-select [(value)]="playerOne">
+    <mat-option *ngFor="let name of names" value="name">{{ name }}</mat-option>
+  </mat-select>
+</mat-form-field>
+
+&nbsp;
+
+<mat-form-field class="score">
+  <input matInput type="number" placeholder="score" [min]="0" [(ngModel)]="scoreOne">
+</mat-form-field>
+
+<br>
+
+<mat-form-field class="player">
+  <mat-label>player</mat-label>
+  <mat-select [(value)]="playerTwo">
+    <mat-option *ngFor="let name of names" value="name">{{ name }}</mat-option>
+  </mat-select>
+</mat-form-field>
+
+&nbsp;
+
+<mat-form-field class="score">
+  <input matInput type="number" placeholder="score" [min]="0" [(ngModel)]="scoreTwo">
+</mat-form-field>
+
+<br>
+
+<div class="buttons">
+  <button mat-button (click)="submit()">submit</button>
+
+  &nbsp;
+
+  <button mat-button (click)="clear()">clear</button>
+</div>
+
+
+

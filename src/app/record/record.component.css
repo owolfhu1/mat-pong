@@ -1,0 +1,11 @@
+.player {
+  width: 240px;
+}
+
+.score {
+  width: 100px;
+}
+
+.buttons {
+  text-align: right;
+}

@@ -362,12 +362,16 @@ MIT
 
 @angular/material/expansion
 
-@angular/material/icon
+@angular/material/core
 
 @angular/material/form-field
 
 @angular/forms
 MIT
+
+@angular/material/select
+
+@angular/material/icon
 
 @angular/material/tabs
 
