@@ -24,8 +24,13 @@ export class RecordComponent implements OnInit {
   }
 
   submit() {
-    if ((!this.scoreOne && this.scoreOne !== 0) || (!this.scoreTwo && this.scoreTwo !== 0)) {
-      this._snackBar.open('Please enter valid scores', 'ok');
+    if (
+      (!this.scoreOne && this.scoreOne !== 0) ||
+      (!this.scoreTwo && this.scoreTwo !== 0) ||
+      !this.playerOne ||
+      !this.playerTwo
+    ) {
+      this._snackBar.open('You must fill out all fields.', 'ok');
     } else {
       const time = new Date().getTime();
       fetch(URL + 'games/add' +
