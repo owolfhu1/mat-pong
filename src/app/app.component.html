@@ -7,35 +7,30 @@
   <mat-drawer mode="side" class="side-bar" [opened]="opened">
     <mat-card class="middle margin">
       <h1 (click)="showImage = !showImage">Ping Pong Tracker</h1>
-      <img *ngIf="showImage" [src]="image" alt=""/>
+      <img *ngIf="showImage" [src]="image" alt="">
     </mat-card>
 
     <mat-accordion>
       <mat-expansion-panel>
         <mat-expansion-panel-header>
-          <mat-panel-title>
-            Record A Game
-          </mat-panel-title>
+          <mat-panel-title>Record A Game</mat-panel-title>
         </mat-expansion-panel-header>
         Record a game content.
       </mat-expansion-panel>
 
       <mat-expansion-panel>
         <mat-expansion-panel-header>
-          <mat-panel-title>
-            Check Expectation
-          </mat-panel-title>
+          <mat-panel-title>Check Expectation</mat-panel-title>
         </mat-expansion-panel-header>
         Check expectation content.
       </mat-expansion-panel>
 
       <mat-expansion-panel>
         <mat-expansion-panel-header>
-          <mat-panel-title>
-            Register
-          </mat-panel-title>
+          <mat-panel-title>Register a New User</mat-panel-title>
         </mat-expansion-panel-header>
-        Register content.
+
+        <app-register></app-register>
       </mat-expansion-panel>
     </mat-accordion>
   </mat-drawer>

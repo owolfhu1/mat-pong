@@ -316,10 +316,7 @@ Apache-2.0
 @angular/core
 MIT
 
-@angular/common
-MIT
-
-@angular/platform-browser
+@angular/animations
 MIT
 
 @angular/cdk
@@ -347,8 +344,15 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
-@angular/animations
+@angular/common
 MIT
+
+@angular/platform-browser
+MIT
+
+@angular/material/button
+
+@angular/material/snack-bar
 
 @angular/material/progress-bar
 
@@ -358,7 +362,12 @@ MIT
 
 @angular/material/expansion
 
-@angular/material/button
+@angular/material/icon
+
+@angular/material/form-field
+
+@angular/forms
+MIT
 
 @angular/material/tabs
 
