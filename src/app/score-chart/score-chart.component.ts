@@ -36,6 +36,10 @@ export class ScoreChartComponent implements OnInit {
         yValueFormatString: '#,###',
         xValueFormatString: 'MMM D h:mm tt',
         lineThickness: 3,
+        click: () => {
+          this.selected = obj.name;
+          this.focus();
+        }
       });
     });
     const chart = new CanvasJS.Chart('chartContainer', {
