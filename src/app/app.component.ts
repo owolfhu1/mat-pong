@@ -19,6 +19,10 @@ export class AppComponent {
       }
     );
   }
+
+  toggle() {
+    this.opened = !this.opened;
+  }
 }
 
 /*

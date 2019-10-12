@@ -1,0 +1,14 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+}
+
+.chart {
+  flex: 1;
+}
+
+.custom-control {
+  position: absolute;
+  z-index: 1;
+}

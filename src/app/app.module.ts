@@ -17,12 +17,14 @@ import {FormsModule} from "@angular/forms";
 import {MatIconModule} from "@angular/material/icon";
 import { RecordComponent } from './record/record.component';
 import {MatSelectModule} from "@angular/material/select";
+import { ScoreChartComponent } from './score-chart/score-chart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
     RecordComponent,
+    ScoreChartComponent,
   ],
   imports: [
     BrowserModule,

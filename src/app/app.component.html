@@ -19,7 +19,7 @@
         <app-record></app-record>
       </mat-expansion-panel>
 
-      <mat-expansion-panel>
+      <mat-expansion-panel disabled>
         <mat-expansion-panel-header>
           <mat-panel-title>Check Expectation</mat-panel-title>
         </mat-expansion-panel-header>
@@ -37,19 +37,21 @@
   </mat-drawer>
 
   <mat-drawer-content class="main">
-    <button mat-button (click)="opened = !opened">
+    <button mat-button (click)="toggle(); chart.delayRender()">
       {{ opened ? '<' : '>' }}
     </button>
 
     <mat-card class="grow margin">
       <mat-tab-group mat-stretch-tabs>
-        <mat-tab label="High Scores"> High Scores </mat-tab>
+        <mat-tab label="Score Graph">
+          <app-score-chart #chart></app-score-chart>
+        </mat-tab>
 
-        <mat-tab label="Seasonal Scores"> Seasonal Scores </mat-tab>
+        <mat-tab label="High Scores"  disabled> High Scores </mat-tab>
 
-        <mat-tab label="Game Lookup"> Game Lookup </mat-tab>
+        <mat-tab label="Seasonal Scores" disabled> Seasonal Scores </mat-tab>
 
-        <mat-tab label="Score Graph"> Score Graph </mat-tab>
+        <mat-tab label="Game Lookup" disabled> Game Lookup </mat-tab>
       </mat-tab-group>
     </mat-card>
   </mat-drawer-content>
