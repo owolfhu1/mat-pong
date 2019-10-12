@@ -50,17 +50,25 @@ export class ScoreChartComponent implements OnInit {
         contentFormatter: data => {
           const dataPoint = data.entries[0].dataPoint;
           return `
-            <h3>${dataPoint.name}</h3>
-            <p>${dataPoint.x}</p>
-            <p>${dataPoint.game.playerOne}(${dataPoint.game.scoreOne}) vs ${dataPoint.game.playerTwo}(${dataPoint.game.scoreTwo})</p>
-            <p>old score: ${dataPoint.old}, new score: ${dataPoint.y}</p>
+            <div style="text-align: center">
+              <h2>${dataPoint.name} - ${dataPoint.y}</h2>
+              <p>${dataPoint.x}</p>
+              <p>${dataPoint.game.playerOne}(${dataPoint.game.scoreOne}) vs ${dataPoint.game.playerTwo}(${dataPoint.game.scoreTwo})</p>
+              <p>old score: ${dataPoint.old}</p>
+            </div>
           `;
         }
       },
       axisX: {
-        valueFormatString: 'MMM DD'
+        valueFormatString: 'MMM DD',
+        tickThickness: 0,
+        lineThickness: 0,
+        gridThickness: 0,
       },
       axisY: {
+        tickThickness: 0,
+        lineThickness: 0,
+        gridThickness: 0,
         includeZero: false
       },
       legend: {
@@ -99,19 +107,28 @@ export class ScoreChartComponent implements OnInit {
         text: this.selected + `'s Scores`,
       },
       axisX: {
-        valueFormatString: 'MMM DD'
+        valueFormatString: 'MMM DD',
+        tickThickness: 0,
+        lineThickness: 0,
+        gridThickness: 0,
       },
       axisY: {
-        includeZero: false
+        gridThickness: 0,
+        includeZero: false,
+        tickThickness: 0,
+        lineThickness: 0,
       },
       zoomEnabled: true,
       toolTip: {
         contentFormatter: data => {
           const dataPoint = data.entries[0].dataPoint;
           return `
-            <p>${dataPoint.x}</p>
-            <p>${dataPoint.game.playerOne}(${dataPoint.game.scoreOne}) vs ${dataPoint.game.playerTwo}(${dataPoint.game.scoreTwo})</p>
-            <p>old score: ${dataPoint.old}, new score: ${dataPoint.y}</p>
+            <div style="text-align: center">
+              <h2>${dataPoint.y}</h2>
+              <p>${dataPoint.x}</p>
+              <p>${dataPoint.game.playerOne}(${dataPoint.game.scoreOne}) vs ${dataPoint.game.playerTwo}(${dataPoint.game.scoreTwo})</p>
+              <p>old score: ${dataPoint.old}</p>
+            </div>
           `;
         }
       },
