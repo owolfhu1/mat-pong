@@ -37,8 +37,7 @@ export class ScoreChartComponent implements OnInit {
         xValueFormatString: 'MMM D h:mm tt',
         lineThickness: 3,
         click: () => {
-          this.selected = obj.name;
-          this.focus();
+          this.focus(obj.name);
         }
       });
     });
@@ -86,7 +85,8 @@ export class ScoreChartComponent implements OnInit {
     chart.render();
   }
 
-  focus() {
+  focus(name) {
+    this.selected = name;
     const obj = {
       type: 'line',
       axisYtype: 'secondary',
@@ -144,6 +144,7 @@ export class ScoreChartComponent implements OnInit {
   getAll() {
     fetch(URL + 'charts/all', {mode: 'cors'}).then(res => res.json())
       .then(result => {
+        this.names = [];
         result.forEach(set => {
           this.names.push(set.name);
           set.dataPoints.forEach(point => point.x = new Date(point.x));

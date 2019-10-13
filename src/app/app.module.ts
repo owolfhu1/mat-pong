@@ -18,6 +18,12 @@ import {MatIconModule} from "@angular/material/icon";
 import { RecordComponent } from './record/record.component';
 import {MatSelectModule} from "@angular/material/select";
 import { ScoreChartComponent } from './score-chart/score-chart.component';
+import { LookupComponent } from './lookup/lookup.component';
+import {MatMenuModule} from "@angular/material/menu";
+import { SeasonsComponent } from './seasons/seasons.component';
+import { HighscoresComponent } from './highscores/highscores.component';
+import { ExpectationsComponent } from './expectations/expectations.component';
+import { ScoreTableComponent } from './shared/score-table/score-table.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +31,11 @@ import { ScoreChartComponent } from './score-chart/score-chart.component';
     RegisterComponent,
     RecordComponent,
     ScoreChartComponent,
+    LookupComponent,
+    SeasonsComponent,
+    HighscoresComponent,
+    ExpectationsComponent,
+    ScoreTableComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,7 +51,8 @@ import { ScoreChartComponent } from './score-chart/score-chart.component';
     MatInputModule,
     FormsModule,
     MatIconModule,
-    MatSelectModule
+    MatSelectModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,21 +1,19 @@
 <div class="custom-control">
+  <br/>
   &nbsp;
 
-  <button mat-raised-button (click)="getAll()">refresh data</button>
-
-  &nbsp;
-
-  <button mat-raised-button (click)="renderList()">reset</button>
+  <button mat-raised-button color="warn" (click)="getAll()">refresh data</button>
 
   &nbsp;
 
-  <mat-form-field class="player">
-    <mat-label>focus on player</mat-label>
+  <button mat-raised-button color="primary" (click)="renderList()">reset</button>
 
-    <mat-select [(value)]="selected" (selectionChange)="focus()">
-      <mat-option *ngFor="let name of names" [value]="name">{{ name }}</mat-option>
-    </mat-select>
-  </mat-form-field>
+  &nbsp;
+
+  <button mat-raised-button color="accent" [matMenuTriggerFor]="menu">Focus on Player</button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item *ngFor="let name of names" (click)="focus(name)">{{ name }}</button>
+  </mat-menu>
 
 </div>
 
