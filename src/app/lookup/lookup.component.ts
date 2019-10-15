@@ -49,10 +49,8 @@ export class LookupComponent implements OnInit {
 
   setFromAndTo() {
     if (this.rawData && this.rawData.length) {
-      this.fromDate = new Date(this.rawData[0].time).toISOString();
-      this.toDate = new Date(this.rawData[this.rawData.length -1].time).toISOString();
-
-      console.log(this.fromDate, this.toDate)
+      this.fromDate = this.fromDate ? this.fromDate : new Date(this.rawData[0].time).toISOString();
+      this.toDate = this.toDate ? this.toDate : new Date(this.rawData[this.rawData.length -1].time).toISOString();
     }
   }
 
