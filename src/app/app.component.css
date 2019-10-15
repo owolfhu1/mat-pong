@@ -26,3 +26,7 @@ img {
 .margin {
   margin: 10px;
 }
+mat-expansion-panel-header {
+  display: flex;
+  justify-content: space-between;
+}

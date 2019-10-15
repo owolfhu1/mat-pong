@@ -1,0 +1,39 @@
+:host {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+}
+
+.body {
+  flex: 1;
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+}
+
+mat-form-field {
+  margin: 5px;
+  width: 200px;
+}
+
+.margin {
+  margin: 5px;
+}
+
+.center {
+  text-align: center;
+}
+
+.win {
+  background: green;
+  border-radius: 10px;
+}
+
+td {
+  text-align: center;
+}
+th {
+  text-align: center;
+}

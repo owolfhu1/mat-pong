@@ -1,3 +1,95 @@
-<p>
-  lookup works!
-</p>
+<div>
+  <mat-form-field>
+    <mat-label>player one</mat-label>
+    <mat-select [(value)]="playerOne">
+      <mat-option *ngFor="let name of names" [value]="name">{{ name }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>player two</mat-label>
+    <mat-select [(value)]="playerTwo">
+      <mat-option *ngFor="let name of names" [value]="name">{{ name }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput [matDatepicker]="fromPicker" [(ngModel)]="fromDate" placeholder="from date">
+    <button mat-button *ngIf="fromDate" matSuffix mat-icon-button aria-label="Clear" (click)="fromDate = null">
+      <mat-icon>close</mat-icon>
+    </button>
+    <mat-datepicker-toggle matSuffix [for]="fromPicker"></mat-datepicker-toggle>
+    <mat-datepicker #fromPicker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput [matDatepicker]="toPicker" [(ngModel)]="toDate" placeholder="to date">
+    <button mat-button *ngIf="toDate" matSuffix mat-icon-button aria-label="Clear" (click)="toDate = null">
+      <mat-icon>close</mat-icon>
+    </button>
+    <mat-datepicker-toggle matSuffix [for]="toPicker"></mat-datepicker-toggle>
+    <mat-datepicker #toPicker></mat-datepicker>
+  </mat-form-field>
+
+  <button mat-raised-button color="accent" class="margin" [matMenuTriggerFor]="menu">lookup</button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="getAll()">all games</button>
+    <button mat-menu-item [disabled]="!playerOne" (click)="getPlayerOne()">
+      {{ playerOne ? playerOne + "'s games" : "player one's games" }}
+    </button>
+    <button mat-menu-item [disabled]="!playerOne || !playerTwo" (click)="getVs()">
+      {{ playerOne && playerTwo ? playerOne + ' vs ' + playerTwo : 'player one vs player two' }}
+    </button>
+  </mat-menu>
+
+  <button mat-raised-button class="margin" color="primary" (click)="takeGames()">filter by date</button>
+
+  <button mat-raised-button class="margin" color="warn" (click)="reset()">reset</button>
+</div>
+
+<div class="body center" *ngIf="!dataSource || dataSource.length === 0">
+  <h1>No results to show.</h1>
+</div>
+
+<div class="body" *ngIf="dataSource && dataSource.length > 0">
+
+    <table mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="playerOne">
+        <th mat-header-cell *matHeaderCellDef>player one</th>
+        <td mat-cell *matCellDef="let element" [class.win]="element.scoreOne > element.scoreTwo">
+          {{element.playerOne}} - {{ element.scoreOne }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="playerTwo">
+        <th mat-header-cell *matHeaderCellDef>player two</th>
+        <td mat-cell *matCellDef="let element" [class.win]="element.scoreOne < element.scoreTwo">
+          {{element.playerTwo}} - {{ element.scoreTwo }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef>date</th>
+        <td mat-cell *matCellDef="let element"> {{formatTime(element.time)}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="edit">
+        <th mat-header-cell *matHeaderCellDef>edit</th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-raised-button>edit</button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+</div>
+
+
+
+
+
+
+
+

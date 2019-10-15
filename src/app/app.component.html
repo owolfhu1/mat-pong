@@ -11,25 +11,31 @@
     </mat-card>
 
     <mat-accordion>
-      <mat-expansion-panel>
+      <mat-expansion-panel hideToggle>
         <mat-expansion-panel-header>
           <mat-panel-title>Record A Game</mat-panel-title>
+
+          <mat-icon>sports_kabaddi</mat-icon>
         </mat-expansion-panel-header>
 
         <app-record></app-record>
       </mat-expansion-panel>
 
-      <mat-expansion-panel disabled>
+      <mat-expansion-panel disabled hideToggle>
         <mat-expansion-panel-header>
           <mat-panel-title>Check Expectation</mat-panel-title>
+
+          <mat-icon>people</mat-icon>
         </mat-expansion-panel-header>
 
         <app-expectations></app-expectations>
       </mat-expansion-panel>
 
-      <mat-expansion-panel>
+      <mat-expansion-panel hideToggle>
         <mat-expansion-panel-header>
           <mat-panel-title>Register a New User</mat-panel-title>
+
+          <mat-icon>person_add</mat-icon>
         </mat-expansion-panel-header>
 
         <app-register></app-register>
@@ -56,7 +62,7 @@
           <app-seasons></app-seasons>
         </mat-tab>
 
-        <mat-tab label="Game Lookup" disabled>
+        <mat-tab label="Game Lookup">
           <app-lookup></app-lookup>
         </mat-tab>
       </mat-tab-group>

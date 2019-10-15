@@ -24,6 +24,10 @@ import { SeasonsComponent } from './seasons/seasons.component';
 import { HighscoresComponent } from './highscores/highscores.component';
 import { ExpectationsComponent } from './expectations/expectations.component';
 import { ScoreTableComponent } from './shared/score-table/score-table.component';
+import {MatTableModule} from "@angular/material/table";
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
 
 @NgModule({
   declarations: [
@@ -52,7 +56,11 @@ import { ScoreTableComponent } from './shared/score-table/score-table.component'
     FormsModule,
     MatIconModule,
     MatSelectModule,
-    MatMenuModule
+    MatMenuModule,
+    MatTableModule,
+    MatToolbarModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
