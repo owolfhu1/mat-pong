@@ -377,6 +377,8 @@ MIT
 
 @angular/material/select
 
+@angular/material/checkbox
+
 @angular/material/tabs
 
 @angular/material/menu

@@ -1,5 +1,5 @@
 <mat-form-field class="input">
-  <input matInput type="text" placeholder="Username" [(ngModel)]="value">
+  <input matInput type="text" placeholder="players name" [(ngModel)]="value">
 
   <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value = ''">
     <mat-icon>close</mat-icon>
@@ -8,6 +8,10 @@
 
 &nbsp;
 
-<button mat-raised-button color="accent" (click)="register()">
+<button
+  mat-raised-button
+  color="accent"
+  [disabled]="!value"
+  (click)="register()">
   register
 </button>

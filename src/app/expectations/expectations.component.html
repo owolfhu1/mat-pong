@@ -1,3 +1,41 @@
-<p>
-  expectations works!
-</p>
+<p><mat-checkbox [(ngModel)]="currentSeason">Use current season</mat-checkbox></p>
+
+<mat-form-field>
+  <mat-label>player one</mat-label>
+  <mat-select [(value)]="playerOne">
+    <mat-option *ngFor="let name of names" [value]="name">{{ name }}</mat-option>
+  </mat-select>
+</mat-form-field>
+
+&nbsp;vs&nbsp;
+
+<mat-form-field>
+  <mat-label>player two</mat-label>
+  <mat-select [(value)]="playerTwo">
+    <mat-option *ngFor="let name of names" [value]="name">{{ name }}</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-card class="results"><h3>{{ msg }}&nbsp;</h3></mat-card>
+
+<br>
+
+<div class="control-wrapper">
+  <button
+    mat-raised-button
+    [disabled]="!playerTwo || !playerOne"
+    (click)="getExpectation()"
+    color="primary">
+    check
+  </button>
+
+  &nbsp;
+
+  <button
+    mat-raised-button
+    color="warn"
+    [disabled]="!playerTwo && !playerOne && !currentSeason"
+    (click)="playerOne = null; playerTwo = null; msg = null; currentSeason = false">
+    clear
+  </button>
+</div>
