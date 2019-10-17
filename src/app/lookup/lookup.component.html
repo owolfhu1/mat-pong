@@ -76,7 +76,7 @@
       <ng-container matColumnDef="edit">
         <th mat-header-cell *matHeaderCellDef>edit</th>
         <td mat-cell *matCellDef="let element">
-          <button mat-raised-button>edit</button>
+          <button mat-raised-button color="warn" (click)="editGame(element)">edit</button>
         </td>
       </ng-container>
 

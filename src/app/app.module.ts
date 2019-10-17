@@ -11,24 +11,24 @@ import { MatCardModule } from "@angular/material/card";
 import { MatProgressBarModule } from "@angular/material/progress-bar";
 import { RegisterComponent } from './register/register.component';
 import { MatSnackBarModule } from "@angular/material/snack-bar";
-import {MatFormFieldModule} from "@angular/material/form-field";
-import {MatInputModule} from "@angular/material/input";
-import {FormsModule} from "@angular/forms";
-import {MatIconModule} from "@angular/material/icon";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule} from "@angular/material/input";
+import { FormsModule} from "@angular/forms";
+import { MatIconModule} from "@angular/material/icon";
 import { RecordComponent } from './record/record.component';
-import {MatSelectModule} from "@angular/material/select";
+import { MatSelectModule} from "@angular/material/select";
 import { ScoreChartComponent } from './score-chart/score-chart.component';
-import { LookupComponent } from './lookup/lookup.component';
-import {MatMenuModule} from "@angular/material/menu";
+import { GameEditDialog, LookupComponent} from './lookup/lookup.component';
+import { MatMenuModule} from "@angular/material/menu";
 import { SeasonsComponent } from './seasons/seasons.component';
 import { HighscoresComponent } from './highscores/highscores.component';
 import { ExpectationsComponent } from './expectations/expectations.component';
 import { ScoreTableComponent } from './shared/score-table/score-table.component';
-import {MatTableModule} from "@angular/material/table";
-import {MatToolbarModule} from "@angular/material/toolbar";
-import {MatDatepickerModule} from "@angular/material/datepicker";
-import {MatNativeDateModule} from "@angular/material/core";
-import {MatCheckboxModule} from "@angular/material/checkbox";
+import { MatTableModule } from "@angular/material/table";
+import { MatToolbarModule } from "@angular/material/toolbar";
+import { MatDatepickerModule } from "@angular/material/datepicker";
+import { MatNativeDateModule } from "@angular/material/core";
+import { MatCheckboxModule } from "@angular/material/checkbox";
 
 @NgModule({
   declarations: [
@@ -41,6 +41,7 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     HighscoresComponent,
     ExpectationsComponent,
     ScoreTableComponent,
+    GameEditDialog,
   ],
   imports: [
     BrowserModule,
@@ -64,7 +65,7 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     MatNativeDateModule,
     MatCheckboxModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  entryComponents:[ GameEditDialog ],
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }

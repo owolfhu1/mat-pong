@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { URL } from "../../constants";
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from "@angular/material/dialog";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-lookup',
@@ -11,6 +13,10 @@ export class LookupComponent implements OnInit {
   dataSource = [];
   rawData = [];
 
+  constructor(
+    public dialog: MatDialog,
+    private snackBar: MatSnackBar
+  ) {}
 
   ngOnInit() {
     fetch(URL + 'players/list', {mode: 'cors'})
@@ -21,7 +27,6 @@ export class LookupComponent implements OnInit {
   getAll() {
     fetch(URL + 'games/all', {mode: 'cors'}).then(res => res.json())
       .then(result => {
-        console.log(result);
         this.rawData = result;
         this.setFromAndTo();
         this.takeGames();
@@ -49,7 +54,7 @@ export class LookupComponent implements OnInit {
 
   setFromAndTo() {
     if (this.rawData && this.rawData.length) {
-      this.fromDate = this.fromDate ? this.fromDate : new Date(this.rawData[0].time).toISOString();
+      this.fromDate = this.fromDate ? this.fromDate : new Date(this.rawData[0].time - 1).toISOString();
       this.toDate = this.toDate ? this.toDate : new Date(this.rawData[this.rawData.length -1].time).toISOString();
     }
   }
@@ -61,7 +66,6 @@ export class LookupComponent implements OnInit {
     } else {
       const fromDate = this.fromDate ? new Date(this.fromDate).getTime() : null;
       const toDate = this.toDate ? new Date(this.toDate).getTime() + 86400000 : null;
-      console.log(this.fromDate);
       this.rawData.forEach(x => {
         const time = x.time;
         if (
@@ -91,4 +95,112 @@ export class LookupComponent implements OnInit {
     this.toDate = null;
     this.dataSource = [];
   }
+
+  editGame(game) {
+    const ref = this.dialog.open(GameEditDialog, {
+      width: '300px',
+      data: game,
+    });
+    ref.afterClosed().subscribe(x => {
+      if (x) this.snackBar.open(x, 'ok');
+    });
+  }
+}
+
+@Component({
+  selector: 'game-edit-dialog',
+  template: `
+      <h3>Editing Game</h3>
+    
+      <mat-form-field class="player">
+          <mat-label>player one</mat-label>
+          <mat-select [(value)]="editedData.playerOne">
+              <mat-option *ngFor="let name of names" [value]="name">{{ name }}</mat-option>
+          </mat-select>
+      </mat-form-field>
+
+      &nbsp;
+
+      <mat-form-field class="score">
+          <input matInput type="number" placeholder="score" [min]="0" [(ngModel)]="editedData.scoreOne">
+      </mat-form-field>
+
+      <mat-form-field class="player">
+          <mat-label>player two</mat-label>
+          <mat-select [(value)]="editedData.playerTwo">
+              <mat-option *ngFor="let name of names" [value]="name">{{ name }}</mat-option>
+          </mat-select>
+      </mat-form-field>
+
+      &nbsp;
+
+      <mat-form-field class="score">
+          <input matInput type="number" placeholder="score" [min]="0" [(ngModel)]="editedData.scoreTwo">
+      </mat-form-field>
+
+
+      <div class="buttons">
+          <button mat-raised-button color="primary" [disabled]="!isEdited" (click)="submit()">submit</button>
+          &nbsp;
+          <button mat-raised-button color="warn" (click)="cancel()">cancel</button>
+      </div>
+  `,
+  styles: [`      
+      .buttons {
+          text-align: right;
+      }
+      .player {
+          width: 170px;
+      }
+      .score {
+          width: 70px;
+      }
+      h3 {
+          text-align: center;
+      }
+  `]
+})
+export class GameEditDialog {
+  editedData: GameRecord;
+  names = [];
+
+  constructor(
+    public dialogRef: MatDialogRef<GameEditDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: GameRecord
+  ) {
+    this.editedData = { ...data };
+    fetch(URL + 'players/list', {mode: 'cors'})
+      .then(res => res.json())
+      .then(result => this.names = result);
+  }
+
+  cancel(): void {
+    this.dialogRef.close();
+  }
+
+  get isEdited(): boolean {
+    let x = false;
+    Object.keys(this.data).forEach(key => {
+      if (this.data[key] !== this.editedData[key]) {
+        x = true;
+      }
+    });
+    return x;
+  }
+
+  submit() {
+    fetch(URL + `games/update?playerOne=${this.editedData.playerOne}&playerTwo=${this.editedData.playerTwo
+    }&scoreOne=${this.editedData.scoreOne}&scoreTwo=${this.editedData.scoreTwo}&time=${this.editedData.time}`,{mode: 'cors'})
+      .then(res => res.text()).then(x => {
+        this.dialogRef.close(x);
+    });
+  }
+}
+
+interface GameRecord {
+  playerOne: string;
+  playerTwo: string;
+  scoreOne: number;
+  scoreTwo: number;
+  time: number;
 }
