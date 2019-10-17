@@ -361,6 +361,8 @@ MIT
 
 @angular/material/datepicker
 
+@angular/material/tooltip
+
 @angular/material/core
 
 @angular/material/icon
@@ -373,11 +375,11 @@ MIT
 
 @angular/material/menu
 
+@angular/material/card
+
 @angular/material/progress-bar
 
 @angular/material/sidenav
-
-@angular/material/card
 
 @angular/material/expansion
 

@@ -28,7 +28,6 @@ mat-form-field {
 
 .win {
   background: green;
-  border-radius: 10px;
 }
 
 td {
@@ -36,4 +35,32 @@ td {
 }
 th {
   text-align: center;
+}
+
+.right {
+  text-align: right;
+}
+.grow {
+  flex: 1;
+  margin-left: 10px;
+  vertical-align: center;
+}
+
+.flex {
+  display: flex;
+}
+.buttons {
+  text-align: right;
+}
+.player {
+  width: 170px;
+}
+.score {
+  width: 70px;
+}
+h3 {
+  text-align: center;
+}
+.bottom-margin {
+  margin-bottom: 10px;
 }

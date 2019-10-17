@@ -18,7 +18,7 @@ import { MatIconModule} from "@angular/material/icon";
 import { RecordComponent } from './record/record.component';
 import { MatSelectModule} from "@angular/material/select";
 import { ScoreChartComponent } from './score-chart/score-chart.component';
-import { GameEditDialog, LookupComponent} from './lookup/lookup.component';
+import { GameEditDialog, GameHistDialog, LookupComponent } from './lookup/lookup.component';
 import { MatMenuModule} from "@angular/material/menu";
 import { SeasonsComponent } from './seasons/seasons.component';
 import { HighscoresComponent } from './highscores/highscores.component';
@@ -29,6 +29,8 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatNativeDateModule } from "@angular/material/core";
 import { MatCheckboxModule } from "@angular/material/checkbox";
+import {MatListModule} from "@angular/material/list";
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 @NgModule({
   declarations: [
@@ -42,6 +44,7 @@ import { MatCheckboxModule } from "@angular/material/checkbox";
     ExpectationsComponent,
     ScoreTableComponent,
     GameEditDialog,
+    GameHistDialog,
   ],
   imports: [
     BrowserModule,
@@ -64,8 +67,13 @@ import { MatCheckboxModule } from "@angular/material/checkbox";
     MatDatepickerModule,
     MatNativeDateModule,
     MatCheckboxModule,
+    MatListModule,
+    MatTooltipModule,
   ],
-  entryComponents:[ GameEditDialog ],
+  entryComponents:[
+    GameEditDialog,
+    GameHistDialog,
+  ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

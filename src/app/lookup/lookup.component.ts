@@ -10,8 +10,8 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class LookupComponent implements OnInit {
   displayedColumns = ['date', 'playerOne', 'playerTwo', 'edit'];
-  dataSource = [];
-  rawData = [];
+  dataSource: GameRecord[] = [];
+  rawData: GameRecord[] = [];
 
   constructor(
     public dialog: MatDialog,
@@ -96,13 +96,65 @@ export class LookupComponent implements OnInit {
     this.dataSource = [];
   }
 
-  editGame(game) {
+  editGame(game: GameRecord) {
     const ref = this.dialog.open(GameEditDialog, {
       width: '300px',
       data: game,
     });
     ref.afterClosed().subscribe(x => {
       if (x) this.snackBar.open(x, 'ok');
+    });
+  }
+
+  history(data: GameRecord) {
+    const ref = this.dialog.open(GameHistDialog, { data });
+    ref.afterClosed().subscribe(x => {
+      if (x) this.snackBar.open(x, 'ok');
+    });
+  }
+}
+
+@Component({
+  selector: 'game-hist-dialog',
+  template: `
+
+      <h3>Edit History</h3>
+    
+      <mat-card class="bottom-margin" *ngFor="let game of data.history; let i = index">
+          <span [ngClass]="{'win': game.scoreOne > game.scoreTwo}">
+              {{ game.playerOne }} ({{ game.scoreOne }})
+          </span>
+          &nbsp;vs&nbsp;
+          <span [ngClass]="{'win': game.scoreOne < game.scoreTwo}">
+              {{ game.playerTwo }} ({{ game.scoreTwo }})
+          </span>
+          &nbsp;
+          <button mat-icon-button mat-raised-button (click)="revert(i)" matTooltip="Revert to this data">
+              <mat-icon>restore</mat-icon>
+          </button>
+      </mat-card>
+      
+      <br>
+      
+      <div class="right">
+          <button mat-raised-button color="warn" (click)="dialogRef.close()">close</button>
+      </div>
+    
+  `,
+  styleUrls: ['./lookup.component.css']
+})
+export class GameHistDialog {
+  constructor(
+    public dialogRef: MatDialogRef<GameHistDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: GameRecord
+  ) {}
+
+  revert(index) {
+    const revertTo = this.data.history[index];
+    fetch(URL + `games/update?playerOne=${revertTo.playerOne}&playerTwo=${revertTo.playerTwo
+    }&scoreOne=${revertTo.scoreOne}&scoreTwo=${revertTo.scoreTwo}&time=${revertTo.time}`,{mode: 'cors'})
+      .then(res => res.text()).then(x => {
+      this.dialogRef.close(x);
     });
   }
 }
@@ -203,4 +255,5 @@ interface GameRecord {
   scoreOne: number;
   scoreTwo: number;
   time: number;
+  history: GameRecord[];
 }
