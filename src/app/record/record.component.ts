@@ -37,7 +37,7 @@ export class RecordComponent implements OnInit {
         `?playerOne=${this.playerOne}&playerTwo=${this.playerTwo}&scoreOne=${this.scoreOne}&scoreTwo=${this.scoreTwo}&time=${time}`,
         {mode: 'cors'}).then(res => res.text()).then(result => {
         this._snackBar.open(result, 'ok');
-        if (result.indexOf(',') === 54) {
+        if (result.indexOf(':') === 13) {
           this.playerOne = null;
           this.scoreOne = null;
           this.playerTwo = null;
