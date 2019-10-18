@@ -9,7 +9,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
   styleUrls: ['./lookup.component.css']
 })
 export class LookupComponent implements OnInit {
-  displayedColumns = ['date', 'playerOne', 'playerTwo', 'edit'];
+  displayedColumns = ['playerOne', 'playerTwo', 'date', 'edit'];
   dataSource: GameRecord[] = [];
   rawData: GameRecord[] = [];
 
@@ -79,7 +79,7 @@ export class LookupComponent implements OnInit {
   }
 
   formatTime(time) {
-    return new Date(time).toDateString();
+    return new Date(time).toLocaleDateString() + ' at ' + new Date(time).toLocaleTimeString();
   }
 
   names = [];
@@ -162,7 +162,7 @@ export class GameHistDialog {
 @Component({
   selector: 'game-edit-dialog',
   template: `
-      <h3>Editing Game</h3>
+      <h3>Edit Game</h3>
     
       <mat-form-field class="player">
           <mat-label>player one</mat-label>

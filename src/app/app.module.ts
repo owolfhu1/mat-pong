@@ -31,6 +31,7 @@ import { MatNativeDateModule } from "@angular/material/core";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import {MatListModule} from "@angular/material/list";
 import {MatTooltipModule} from "@angular/material/tooltip";
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import {MatTooltipModule} from "@angular/material/tooltip";
     MatCheckboxModule,
     MatListModule,
     MatTooltipModule,
+    MatPaginatorModule,
   ],
   entryComponents:[
     GameEditDialog,

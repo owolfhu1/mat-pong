@@ -27,14 +27,11 @@ mat-form-field {
 }
 
 .win {
-  background: green;
+  color: lightgreen;
 }
 
-td {
-  text-align: center;
-}
-th {
-  text-align: center;
+.lose {
+  color: lightcoral;
 }
 
 .right {

@@ -50,6 +50,10 @@
 
     <mat-card class="grow margin">
       <mat-tab-group mat-stretch-tabs>
+        <mat-tab label="Game Lookup">
+          <app-lookup></app-lookup>
+        </mat-tab>
+
         <mat-tab label="Score Graph">
           <app-score-chart #chart></app-score-chart>
         </mat-tab>
@@ -60,10 +64,6 @@
 
         <mat-tab label="Seasonal Scores" disabled>
           <app-seasons></app-seasons>
-        </mat-tab>
-
-        <mat-tab label="Game Lookup">
-          <app-lookup></app-lookup>
         </mat-tab>
       </mat-tab-group>
     </mat-card>

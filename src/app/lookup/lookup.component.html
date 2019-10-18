@@ -56,14 +56,16 @@
     <table mat-table [dataSource]="dataSource">
       <ng-container matColumnDef="playerOne">
         <th mat-header-cell *matHeaderCellDef>player one</th>
-        <td mat-cell *matCellDef="let element" [class.win]="element.scoreOne > element.scoreTwo">
+        <td mat-cell *matCellDef="let element"
+            [ngClass]="{win: element.scoreOne > element.scoreTwo, lose: element.scoreOne < element.scoreTwo}">
           {{element.playerOne}} - {{ element.scoreOne }}
         </td>
       </ng-container>
 
       <ng-container matColumnDef="playerTwo">
         <th mat-header-cell *matHeaderCellDef>player two</th>
-        <td mat-cell *matCellDef="let element" [class.win]="element.scoreOne < element.scoreTwo">
+        <td mat-cell *matCellDef="let element"
+            [ngClass]="{win: element.scoreOne < element.scoreTwo, lose: element.scoreOne > element.scoreTwo}">
           {{element.playerTwo}} - {{ element.scoreTwo }}
         </td>
       </ng-container>

@@ -15,7 +15,7 @@ export class ScoreChartComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    setTimeout(() => this.getAll());
+    this.getAll();
   }
 
   delayRender() {
@@ -150,7 +150,6 @@ export class ScoreChartComponent implements OnInit {
           set.dataPoints.forEach(point => point.x = new Date(point.x));
         });
         this.dataList = result;
-        this.renderList();
       });
   }
 }
