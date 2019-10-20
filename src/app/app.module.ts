@@ -32,6 +32,7 @@ import { MatCheckboxModule } from "@angular/material/checkbox";
 import {MatListModule} from "@angular/material/list";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatSortModule} from "@angular/material/sort";
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     MatListModule,
     MatTooltipModule,
     MatPaginatorModule,
+    MatSortModule,
   ],
   entryComponents:[
     GameEditDialog,

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import { URL } from '../../constants'
 import * as CanvasJS from '../canvasjs.min';
 
@@ -11,6 +11,7 @@ export class ScoreChartComponent implements OnInit {
   selected;
   dataList = [];
   names = [];
+  @ViewChild('chart') chart;
 
   constructor() { }
 
@@ -19,12 +20,19 @@ export class ScoreChartComponent implements OnInit {
   }
 
   delayRender() {
-    setTimeout(() => {
-      this.renderList();
-    }, 350);
+    if (this.lastRender)
+      setTimeout(() => {
+        if (this.lastRender === 'all')
+          this.renderList();
+        else
+          this.focus(this.selected);
+      }, 350);
   }
 
+  lastRender;
+
   renderList() {
+    this.lastRender = 'all';
     this.selected = null;
     const data = [];
     this.dataList.forEach(obj => {
@@ -86,6 +94,7 @@ export class ScoreChartComponent implements OnInit {
   }
 
   focus(name) {
+    this.lastRender = 'focus';
     this.selected = name;
     const obj = {
       type: 'line',
@@ -150,6 +159,17 @@ export class ScoreChartComponent implements OnInit {
           set.dataPoints.forEach(point => point.x = new Date(point.x));
         });
         this.dataList = result;
+        if (this.lastRender) {
+          if (this.lastRender === 'all')
+            this.renderList();
+          else
+            this.focus(this.selected);
+        }
       });
+  }
+
+  clear() {
+    this.chart.nativeElement.innerHTML = '';
+    this.lastRender = null;
   }
 }

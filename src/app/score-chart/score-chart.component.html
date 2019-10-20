@@ -1,20 +1,22 @@
 <div class="custom-control">
   <br/>
-  &nbsp;
 
-  <button mat-raised-button color="warn" (click)="getAll()">refresh data</button>
-
-  &nbsp;
-
-  <button mat-raised-button color="primary" (click)="renderList()">render</button>
+  <button mat-raised-button color="accent" (click)="renderList()">all</button>
 
   &nbsp;
 
-  <button mat-raised-button color="accent" [matMenuTriggerFor]="menu">Focus on Player</button>
+  <button mat-raised-button color="accent" [matMenuTriggerFor]="menu">focus</button>
   <mat-menu #menu="matMenu">
     <button mat-menu-item *ngFor="let name of names" (click)="focus(name)">{{ name }}</button>
   </mat-menu>
 
+  &nbsp;
+
+  <button mat-raised-button color="primary" (click)="getAll()">refresh</button>
+
+  &nbsp;
+
+  <button mat-raised-button color="warn" (click)="clear()">clear</button>
 </div>
 
-<div id="chartContainer" class="chart"></div>
+<div id="chartContainer" class="chart" #chart></div>

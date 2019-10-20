@@ -1,3 +1,36 @@
-<p>
-  highscores works!
-</p>
+<mat-tab-group mat-stretch-tabs>
+  <mat-tab label="over all">
+    <div class="control">
+      <button mat-raised-button color="primary" (click)="fetchAll()">refresh</button>
+      &nbsp;
+      All High Scores - Current leader:
+      {{ allPlayers.data && allPlayers.data.length > 0 ? allPlayers.data[0].username : 'data unavailable'}}
+    </div>
+
+    <app-score-table [data]="allPlayers"></app-score-table>
+  </mat-tab>
+
+  <mat-tab label="seasonal">
+    <div class="control">
+      <button mat-raised-button color="accent" [matMenuTriggerFor]="menu">pick a season</button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item *ngFor="let s of seasons" (click)="setSeason(s)">{{ formatSeason(s) }}</button>
+      </mat-menu>
+      &nbsp;
+      <button mat-raised-button color="accent" (click)="fetchCurrent()">current season</button>
+      &nbsp;
+      <button mat-raised-button color="primary" (click)="fetchSeason()">refresh</button>
+      &nbsp;
+      <button mat-raised-button color="warn" [matMenuTriggerFor]="END">end season</button>
+      <mat-menu #END="matMenu">
+        <input type="password" #password>
+        <button mat-menu-item color="warn" (click)="end(password.value)">end now</button>
+      </mat-menu>
+      &nbsp;
+      Now viewing {{ formatSeason(season) }} - Season leader:
+      {{ seasonPlayers.data && seasonPlayers.data.length > 0 ? seasonPlayers.data[0].username : 'data unavailable'}}
+    </div>
+
+    <app-score-table [data]="seasonPlayers"></app-score-table>
+  </mat-tab>
+</mat-tab-group>

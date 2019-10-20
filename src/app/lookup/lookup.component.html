@@ -45,6 +45,8 @@
   <button mat-raised-button class="margin" color="primary" (click)="takeGames()">filter by date</button>
 
   <button mat-raised-button class="margin" color="warn" (click)="reset()">reset</button>
+
+  <span *ngIf="dataSource && dataSource.length">showing {{ dataSource.length }} results</span>
 </div>
 
 <div class="body center" *ngIf="!dataSource || dataSource.length === 0">

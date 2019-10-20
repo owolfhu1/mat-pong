@@ -387,6 +387,8 @@ MIT
 
 @angular/material/tabs
 
+@angular/material/sort
+
 zone.js
 MIT
 The MIT License
