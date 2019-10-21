@@ -103,8 +103,8 @@ export interface Season {
           <input matInput type="password" placeholder="magic word" #input>
       </mat-form-field>
       <div>
-          <button mat-raised-button color="warn" (click)="dialogRef.close()">cancel</button>&nbsp;
-          <button mat-raised-button color="primary" (click)="end(input.value)">end now</button>
+          <button mat-raised-button color="primary" (click)="end(input.value)">end now</button>&nbsp;
+          <button mat-raised-button color="warn" (click)="dialogRef.close()">cancel</button>
       </div>
   `,
   styles: [`
