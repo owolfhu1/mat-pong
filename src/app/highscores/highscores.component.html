@@ -17,15 +17,11 @@
         <button mat-menu-item *ngFor="let s of seasons" (click)="setSeason(s)">{{ formatSeason(s) }}</button>
       </mat-menu>
       &nbsp;
-      <button mat-raised-button color="accent" (click)="fetchCurrent()">current season</button>
+      <button mat-raised-button color="accent" (click)="fetchCurrent()" [disabled]="season.end === 0">current season</button>
       &nbsp;
       <button mat-raised-button color="primary" (click)="fetchSeason()">refresh</button>
       &nbsp;
       <button mat-raised-button color="warn" (click)="end()">end season</button>
-<!--      <mat-menu #END="matMenu">-->
-<!--        <input type="password" #password>-->
-<!--        <button mat-menu-item color="warn" (click)="end(password.value)">end now</button>-->
-<!--      </mat-menu>-->
       &nbsp;
       Now viewing {{ formatSeason(season) }} - Season leader:
       {{ seasonPlayers.data && seasonPlayers.data.length > 0 ? seasonPlayers.data[0].username : 'data unavailable'}}
