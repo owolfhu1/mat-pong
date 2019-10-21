@@ -99,11 +99,12 @@ export interface Season {
   selector: 'end-season-dialog',
   template: `
       <h3>End Season</h3>
+      Enter the magic word to end the season. <br>
       <mat-form-field>
           <input matInput type="password" placeholder="magic word" #input>
       </mat-form-field>
       <div>
-          <button mat-raised-button color="primary" (click)="end(input.value)">end now</button>&nbsp;
+          <button mat-raised-button color="primary" (click)="end(input.value)" [disabled]="!input.value">end now</button>&nbsp;
           <button mat-raised-button color="warn" (click)="dialogRef.close()">cancel</button>
       </div>
   `,
