@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { URL } from "../../constants";
 import { MatTableDataSource } from "@angular/material/table";
+import { MatDialog, MatDialogRef } from "@angular/material/dialog";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-highscores',
@@ -14,7 +16,10 @@ export class HighscoresComponent implements OnInit {
   seasons: Season[] = [];
   season: Season = { id: '', start: 0, end: 0 };
 
-  constructor() { }
+  constructor(
+    public dialog: MatDialog,
+    private snackBar: MatSnackBar,
+  ) { }
 
   ngOnInit() {
     this.fetchAll();
@@ -66,9 +71,13 @@ export class HighscoresComponent implements OnInit {
       });
   }
 
-  end(pass) {
-    fetch(URL + `seasons/end?word=${pass}&time=${new Date().getTime()}`, {mode: 'cors'}).then(res => res.text())
-      .then(result => alert(result ? result : 'Something went wrong, you probably entered a bad password.'));
+  end() {
+    const ref = this.dialog.open(EndSeasonDialog, {
+      width: '300px'
+    });
+    ref.afterClosed().subscribe(x => {
+      if (x) this.snackBar.open(x, 'ok');
+    });
   }
 }
 
@@ -84,4 +93,34 @@ export interface Season {
   id: string;
   start: number;
   end: number;
+}
+
+@Component({
+  selector: 'end-season-dialog',
+  template: `
+      <h3>End Season</h3>
+      <mat-form-field>
+          <input matInput type="password" placeholder="magic word" #input>
+      </mat-form-field>
+      <div>
+          <button mat-raised-button color="warn" (click)="dialogRef.close()">cancel</button>&nbsp;
+          <button mat-raised-button color="primary" (click)="end(input.value)">end now</button>
+      </div>
+  `,
+  styles: [`
+      h3 {
+          text-align: center;
+      }
+      div {
+          text-align: right;
+      }
+  `]
+})
+export class EndSeasonDialog {
+  constructor(public dialogRef: MatDialogRef<EndSeasonDialog>) {}
+  end(word) {
+    fetch(URL + `seasons/end?word=${word}&time=${new Date().getTime()}`, {mode: 'cors'}).then(res => res.text())
+      .then(result => this.dialogRef.close(result ? result : 'Something went wrong, you probably entered a bad password.'));
+
+  }
 }

@@ -377,6 +377,10 @@ MIT
 
 @angular/material/card
 
+@angular/material/tabs
+
+@angular/material/sort
+
 @angular/material/progress-bar
 
 @angular/material/sidenav
@@ -384,10 +388,6 @@ MIT
 @angular/material/expansion
 
 @angular/material/checkbox
-
-@angular/material/tabs
-
-@angular/material/sort
 
 zone.js
 MIT

@@ -21,7 +21,7 @@ import { ScoreChartComponent } from './score-chart/score-chart.component';
 import { GameEditDialog, GameHistDialog, LookupComponent } from './lookup/lookup.component';
 import { MatMenuModule} from "@angular/material/menu";
 import { SeasonsComponent } from './seasons/seasons.component';
-import { HighscoresComponent } from './highscores/highscores.component';
+import { EndSeasonDialog, HighscoresComponent } from './highscores/highscores.component';
 import { ExpectationsComponent } from './expectations/expectations.component';
 import { ScoreTableComponent } from './shared/score-table/score-table.component';
 import { MatTableModule } from "@angular/material/table";
@@ -29,10 +29,10 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatNativeDateModule } from "@angular/material/core";
 import { MatCheckboxModule } from "@angular/material/checkbox";
-import {MatListModule} from "@angular/material/list";
-import {MatTooltipModule} from "@angular/material/tooltip";
-import {MatPaginatorModule} from "@angular/material/paginator";
-import {MatSortModule} from "@angular/material/sort";
+import { MatListModule } from "@angular/material/list";
+import { MatTooltipModule } from "@angular/material/tooltip";
+import { MatPaginatorModule } from "@angular/material/paginator";
+import { MatSortModule } from "@angular/material/sort";
 
 @NgModule({
   declarations: [
@@ -47,6 +47,7 @@ import {MatSortModule} from "@angular/material/sort";
     ScoreTableComponent,
     GameEditDialog,
     GameHistDialog,
+    EndSeasonDialog,
   ],
   imports: [
     BrowserModule,
@@ -77,6 +78,7 @@ import {MatSortModule} from "@angular/material/sort";
   entryComponents:[
     GameEditDialog,
     GameHistDialog,
+    EndSeasonDialog,
   ],
   bootstrap: [ AppComponent ]
 })
