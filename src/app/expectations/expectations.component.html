@@ -20,22 +20,22 @@
 
 <br>
 
-<div class="control-wrapper">
-  <button
-    mat-raised-button
-    [disabled]="!playerTwo || !playerOne"
-    (click)="getExpectation()"
-    color="primary">
-    check
-  </button>
-
-  &nbsp;
-
+<div class="right">
   <button
     mat-raised-button
     color="warn"
     [disabled]="!playerTwo && !playerOne && !currentSeason"
     (click)="playerOne = null; playerTwo = null; msg = null; currentSeason = false">
     clear
+  </button>
+
+  &nbsp;
+
+  <button
+    mat-raised-button
+    [disabled]="!playerTwo || !playerOne"
+    (click)="getExpectation()"
+    color="primary">
+    check
   </button>
 </div>

@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppComponent } from './app.component';
+import { AppComponent, LoginDialog } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from "@angular/material/button";
 import { MatSidenavModule } from "@angular/material/sidenav";
@@ -33,6 +33,8 @@ import { MatListModule } from "@angular/material/list";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatSortModule } from "@angular/material/sort";
+import { LoginComponent } from "./login/login.component";
+import { PasswordChangerComponent } from './password-changer/password-changer.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,9 @@ import { MatSortModule } from "@angular/material/sort";
     GameEditDialog,
     GameHistDialog,
     EndSeasonDialog,
+    LoginDialog,
+    LoginComponent,
+    PasswordChangerComponent,
   ],
   imports: [
     BrowserModule,
@@ -79,6 +84,7 @@ import { MatSortModule } from "@angular/material/sort";
     GameEditDialog,
     GameHistDialog,
     EndSeasonDialog,
+    LoginDialog,
   ],
   bootstrap: [ AppComponent ]
 })

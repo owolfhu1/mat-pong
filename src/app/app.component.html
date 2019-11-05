@@ -3,10 +3,13 @@
   <mat-progress-bar mode="query" color="accent"></mat-progress-bar>
 </div>
 
-<mat-drawer-container *ngIf="!loading" class="container">
+<mat-drawer-container *ngIf="!loading && username" class="container">
   <mat-drawer mode="side" class="side-bar" [opened]="opened">
     <mat-card class="middle margin">
       <h2 (click)="showImage = !showImage">Ping Pong Tracker</h2>
+      <h4>Welcome {{ username }} <button (click)="promptLogin()" matTooltip="logout" mat-icon-button aria-label="Example icon-button with a heart icon">
+        <mat-icon>emoji_people</mat-icon>
+      </button></h4>
       <img *ngIf="showImage" [src]="image" alt="">
     </mat-card>
 
@@ -33,19 +36,19 @@
 
       <mat-expansion-panel hideToggle>
         <mat-expansion-panel-header>
-          <mat-panel-title>Register a New Player</mat-panel-title>
+          <mat-panel-title>Change Password</mat-panel-title>
 
-          <mat-icon>person_add</mat-icon>
+          <mat-icon>fingerprint</mat-icon>
         </mat-expansion-panel-header>
 
-        <app-register></app-register>
+        <app-password-changer [username]="username"></app-password-changer>
       </mat-expansion-panel>
     </mat-accordion>
   </mat-drawer>
 
   <mat-drawer-content class="main">
     <button mat-button (click)="toggle(); chart.delayRender()">
-      {{ opened ? '<' : '>' }}
+      <mat-icon>{{ opened ? 'chevron_left' : 'chevron_right' }}</mat-icon>
     </button>
 
     <mat-card class="grow margin">
@@ -61,10 +64,6 @@
         <mat-tab label="Score Graph">
           <app-score-chart #chart></app-score-chart>
         </mat-tab>
-
-<!--        <mat-tab label="Seasonal Scores" disabled>-->
-<!--          <app-seasons></app-seasons>-->
-<!--        </mat-tab>-->
       </mat-tab-group>
     </mat-card>
   </mat-drawer-content>

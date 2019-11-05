@@ -30,7 +30,6 @@ export class HighscoresComponent implements OnInit {
     fetch(URL + 'players/scores?type=rating', {mode: 'cors'}).then(res => res.json())
       .then(result => {
         this.allPlayers = new MatTableDataSource(result);
-        console.log(this.allPlayers)
       });
   }
 

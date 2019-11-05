@@ -28,23 +28,23 @@
 
 <br>
 
-<div class="buttons">
-  <button
-    mat-raised-button
-    color="primary"
-    [disabled]="!playerOne || !playerTwo || (!scoreOne && scoreOne !== 0) || (!scoreTwo && scoreTwo !== 0)"
-    (click)="submit()">
-    submit
-  </button>
-
-  &nbsp;
-
+<div class="right">
   <button
     mat-raised-button
     color="warn"
     [disabled]="!playerOne && !playerTwo && (!scoreOne && scoreOne !== 0) && (!scoreTwo && scoreTwo !== 0)"
     (click)="clear()">
     clear
+  </button>
+
+  &nbsp;
+
+  <button
+    mat-raised-button
+    color="primary"
+    [disabled]="!playerOne || !playerTwo || (!scoreOne && scoreOne !== 0) || (!scoreTwo && scoreTwo !== 0)"
+    (click)="submit()">
+    submit
   </button>
 </div>
 

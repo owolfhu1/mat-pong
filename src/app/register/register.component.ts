@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { URL } from '../../constants';
+import { HASH, URL } from '../../constants';
 import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({
@@ -8,7 +8,8 @@ import { MatSnackBar } from "@angular/material/snack-bar";
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  value = '';
+  username = '';
+  password = '';
 
   constructor(private _snackBar: MatSnackBar) { }
 
@@ -16,13 +17,12 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    if (/^[a-zA-Z]+$/.test(this.value)) {
-      fetch(URL + `players/register?username=${this.value}`, {mode: 'cors'})
+    if (/^[a-zA-Z]+$/.test(this.username)) {
+      fetch(URL + `players/register?username=${this.username}&password=${HASH(this.password)}`, {mode: 'cors'})
         .then(res => res.text()).then(result => {
           this._snackBar.open(result, 'ok');
         }
       );
-      this.value = '';
     } else {
       this._snackBar.open('please enter only letters', 'ok');
     }
