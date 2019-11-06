@@ -21,7 +21,7 @@
           <mat-icon>sports_kabaddi</mat-icon>
         </mat-expansion-panel-header>
 
-        <app-record></app-record>
+        <app-record [username]="username" name></app-record>
       </mat-expansion-panel>
 
       <mat-expansion-panel hideToggle>
@@ -31,7 +31,7 @@
           <mat-icon>people</mat-icon>
         </mat-expansion-panel-header>
 
-        <app-expectations></app-expectations>
+        <app-expectations [username]="username"></app-expectations>
       </mat-expansion-panel>
 
       <mat-expansion-panel hideToggle>
@@ -58,7 +58,7 @@
         </mat-tab>
 
         <mat-tab label="Game Lookup">
-          <app-lookup></app-lookup>
+          <app-lookup [username]="username"></app-lookup>
         </mat-tab>
 
         <mat-tab label="Score Graph">

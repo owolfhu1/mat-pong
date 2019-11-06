@@ -1,7 +1,7 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 import { URL } from "../../constants";
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from "@angular/material/dialog";
-import {MatSnackBar} from "@angular/material/snack-bar";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-lookup',
@@ -12,6 +12,7 @@ export class LookupComponent implements OnInit {
   displayedColumns = ['playerOne', 'playerTwo', 'date', 'edit'];
   dataSource: GameRecord[] = [];
   rawData: GameRecord[] = [];
+  @Input() username;
 
   constructor(
     public dialog: MatDialog,
@@ -21,7 +22,10 @@ export class LookupComponent implements OnInit {
   ngOnInit() {
     fetch(URL + 'players/list', {mode: 'cors'})
       .then(res => res.json())
-      .then(result => this.names = result);
+      .then(result => {
+        this.names = result;
+        this.playerOne = this.username;
+      });
   }
 
   getAll() {

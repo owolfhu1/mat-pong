@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {URL} from "../../constants";
+import { Component, Input, OnInit } from '@angular/core';
+import { URL } from "../../constants";
 
 @Component({
   selector: 'app-expectations',
@@ -7,6 +7,7 @@ import {URL} from "../../constants";
   styleUrls: ['./expectations.component.css']
 })
 export class ExpectationsComponent implements OnInit {
+  @Input() username;
   names;
   playerOne;
   playerTwo;
@@ -18,7 +19,10 @@ export class ExpectationsComponent implements OnInit {
   ngOnInit() {
     fetch(URL + 'players/list', {mode: 'cors'})
       .then(res => res.json())
-      .then(result => this.names = result);
+      .then(result => {
+        this.names = result;
+        this.playerOne = this.username;
+      });
   }
 
   round(number) {

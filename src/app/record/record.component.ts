@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { URL } from "../../constants";
 import { MatSnackBar } from "@angular/material/snack-bar";
 
@@ -8,7 +8,7 @@ import { MatSnackBar } from "@angular/material/snack-bar";
   styleUrls: ['./record.component.css']
 })
 export class RecordComponent implements OnInit {
-
+  @Input() username;
   names;
   playerOne;
   scoreOne;
@@ -20,7 +20,10 @@ export class RecordComponent implements OnInit {
   ngOnInit() {
     fetch(URL + 'players/list', {mode: 'cors'})
       .then(res => res.json())
-      .then(result => this.names = result);
+      .then(result => {
+        this.names = result;
+        this.playerOne = this.username;
+      });
   }
 
   submit() {
@@ -38,7 +41,7 @@ export class RecordComponent implements OnInit {
         {mode: 'cors'}).then(res => res.text()).then(result => {
         this._snackBar.open(result, 'ok');
         if (result.indexOf(':') === 13) {
-          this.playerOne = null;
+          this.playerOne = this.username;
           this.scoreOne = null;
           this.playerTwo = null;
           this.scoreTwo = null;
